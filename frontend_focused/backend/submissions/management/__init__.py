@@ -1,2 +1,1 @@
 """Management utilities for submissions."""
-

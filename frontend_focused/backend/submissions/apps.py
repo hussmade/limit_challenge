@@ -5,4 +5,3 @@ class SubmissionsConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "submissions"
     verbose_name = "Submission Tracker"
-

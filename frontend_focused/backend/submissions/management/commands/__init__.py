@@ -1,2 +1,1 @@
 """Command package for submissions."""
-

@@ -57,4 +57,3 @@ class DocumentAdmin(admin.ModelAdmin):
 @admin.register(models.Note)
 class NoteAdmin(admin.ModelAdmin):
     list_display = ("submission", "author_name", "created_at")
-

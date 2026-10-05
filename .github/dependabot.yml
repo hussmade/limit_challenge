@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /backend_focused/frontend
+    schedule: { interval: weekly }
+  - package-ecosystem: npm
+    directory: /frontend_focused/frontend
+    schedule: { interval: weekly }
+  - package-ecosystem: pip
+    directory: /backend_focused/backend
+    schedule: { interval: weekly }
+  - package-ecosystem: pip
+    directory: /frontend_focused/backend
+    schedule: { interval: weekly }
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: monthly }

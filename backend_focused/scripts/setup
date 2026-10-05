@@ -1,0 +1,23 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")/.."
+PYTHON_BIN=${PYTHON_BIN:-python3.13}
+"$PYTHON_BIN" -m venv backend/.venv
+backend/.venv/bin/python -m pip install -r backend/requirements-dev.txt
+backend/.venv/bin/python - <<'SETUP'
+from pathlib import Path
+import os, secrets, shlex
+backend_env = Path('backend/.env')
+if not backend_env.exists():
+    template = Path('backend/.env.example').read_text()
+    template = template.replace('replace-with-a-random-secret-generated-during-setup', secrets.token_urlsafe(64))
+    backend_env.write_text(template + 'DEMO_PASSWORD=' + shlex.quote(os.environ.get('DEMO_PASSWORD', 'Local-demo-2026!')) + '\n')
+    backend_env.chmod(0o600)
+if not Path('.env').exists():
+    Path('.env').write_text(Path('.env.example').read_text().replace('replace-with-a-random-local-password', secrets.token_hex(24)))
+    Path('.env').chmod(0o600)
+SETUP
+(cd frontend && npm ci --no-fund)
+./scripts/backend migrate --noinput
+./scripts/backend seed_fleet
+printf '%s\n' 'Ready. Start both services with ./scripts/dev. Local demo username: operator or viewer.'

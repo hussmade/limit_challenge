@@ -1,0 +1,6 @@
+.venv
+.env
+*.sqlite3
+__pycache__
+.coverage
+.ruff_cache

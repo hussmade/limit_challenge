@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")/.."
+(cd backend && .venv/bin/ruff check . && .venv/bin/ruff format --check . && .venv/bin/python manage.py makemigrations --check --dry-run --settings=server.test_settings && .venv/bin/coverage run manage.py test --settings=server.test_settings && .venv/bin/coverage report)
+(cd frontend && npm run check && npm run build)

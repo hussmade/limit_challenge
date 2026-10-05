@@ -55,6 +55,7 @@ export interface Document {
   docType: string;
   uploadedAt: string;
   fileUrl: string;
+  downloadUrl: string | null;
 }
 
 export interface NoteDetail {

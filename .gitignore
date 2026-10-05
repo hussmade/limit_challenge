@@ -1,0 +1,57 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+out/
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+.ruff_cache/
+*.tsbuildinfo
+test-results/
+playwright-report/
+artifacts/
+!.github/
+
+# Keep review artifacts local; only the AI log is versioned.
+/docs/*
+!/docs/ai-collaboration.md
+
+# Local coding assistants and editor state.
+AGENTS.md
+CLAUDE.md
+.agents/
+.claude/
+.codex/
+.idea/
+.vscode/
+
+# Python tooling and package output.
+venv/
+.mypy_cache/
+.hypothesis/
+.tox/
+.nox/
+*.egg-info/
+build/
+dist/
+.coverage.*
+coverage.xml
+
+# Local credentials, logs and temporary files.
+.envrc
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+*.swp
+*.swo
+*~
